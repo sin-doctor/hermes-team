@@ -14,4 +14,28 @@
         FROM USER
         WHERE user_id = #{user_id}
     </select>
+
+
+    <select id="getAllUsers" >
+        SELECT * FROM USER
+    </select>
+
+    <select id="login">
+        SELECT *
+        FROM USER
+        WHERE USER_ID = #{user_id}
+          AND USER_PW = #{user_pw}
+    </select>
+
+    <select id="login_search">
+        SELECT *
+        FROM USER
+        WHERE USER_verification_answer = #{answer}
+    </select>
+    <select id="login_search_completed">
+    SELECT *
+    FROM USER
+    WHERE user_name= #{user_name}
+    AND user_verification_answer = #{user_verification_answer}
+    </select>
 </mapper>

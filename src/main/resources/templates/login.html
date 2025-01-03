@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hermes_Login</title>
+    <link href="/css/styles.css" rel="stylesheet">
+    <style>
+
+
+        .login_container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 30px 20px;
+            width: 250px;
+        }
+
+        /* 폼 스타일 */
+        .login_form {
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login_form label {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .login_form input {
+            height: 40px;
+            margin-bottom: 15px;
+            padding: 0 10px;
+            border: 1px solid white;
+            border-radius: 4px;
+            font-size: 14px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .login_form input:focus {
+            border-color: #333;
+            outline: none;
+        }
+
+        /* 버튼 스타일 */
+        .login_button {
+            height: 45px;
+            background-color: #000;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .login_button:hover {
+            background-color: #333;
+        }
+
+        /* 하단 링크 스타일 */
+        .links {
+            justify-content: space-between;
+            display: flex;
+            gap: 10px;
+            font-size: 12px;
+            color: #555;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: #555;
+        }
+
+        .links a:hover {
+            color: #000;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<th:block th:replace="~{layout/header :: header}"></th:block>
+
+    <div class="login_container">
+        <form class="login_form" action="/login" method="post">
+            <label for="user_id">아이디</label>
+            <input type="text" id="user_id" name="user_id" placeholder="아이디를 입력하시오" required>
+            <label for="user_pw">비밀번호</label>
+            <input type="password" id="user_pw" name="user_pw" placeholder="비밀번호를 입력하시오" required>
+            <button class="login_button" type="submit">로그인</button>
+        </form>
+
+    <div class="links">
+        <a href="login_search" class = "search-id">아이디/비밀번호 찾기</a>
+        <a href="signup" class = "signup">회원가입</a>
+    </div>
+    </div>
+<th:block th:replace="~{layout/footer :: footer}"></th:block>
+</body>
+</html>

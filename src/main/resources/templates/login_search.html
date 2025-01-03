@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>계정 복구</title>
+    <link href="/css/styles.css" rel="stylesheet">
+    <style>
+
+        .login_search_container {
+            margin: 50px auto;
+            width: 250px;
+            padding: 50px;
+            background: #ffffff;
+        }
+        .login_search_form {
+            display: flex;
+            flex-direction: column;
+        }
+        .login_search_form label {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .login_search_form input{
+            height: 40px;
+            margin-bottom: 15px;
+            padding: 0 10px;
+            border: 1px solid white;
+            border-radius: 4px;
+            font-size: 14px;
+            border-bottom: 1px solid #ccc;
+        }
+        .login_search_form select{
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            height: 45px;
+            background-color: #000;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        button:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+<th:block th:replace="~{layout/header :: header}"></th:block>
+<div class="login_search_container">
+
+    <form class="login_search_form" id="login_search" action="/login_search_completed" method="get">
+        <label for="user_name">사용자 이름:</label>
+        <input
+                type="text"
+                id="user_name"
+                name="user_name"
+                placeholder="사용자 이름 입력"
+                required
+        />
+
+        <label for="question">보안 질문:</label>
+        <select id="question" name="question">
+            <option value="birthCity">출생 도시는 어디인가요?</option>
+            <option value="firstSchool">첫번째 학교 이름은 무엇인가요?</option>
+            <option value="favoriteFood">가장 좋아하는 음식은 무엇인가요?</option>
+        </select>
+
+        <label for="user_verification_answer">답변:</label>
+        <input type="text" id="user_verification_answer" name="user_verification_answer" placeholder="답변 입력" required />
+
+        <button type="submit" >입력 완료</button>
+    </form>
+
+</div>
+<th:block th:replace="~{layout/footer :: footer}"></th:block>
+<script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("login_search");
+
+        form.addEventListener("submit", (event) => {
+            // 폼 제출 시점에 값들을 가져옴
+            const userId = document.getElementById("user_name").value.trim();
+            const question = document.getElementById("question").value;
+            const answer = document.getElementById("answer").value.trim();
+
+            // 사용자 이름 검증 (2-20자 사이, 영문/한글/숫자 허용)
+            const userIdRegex = /^[a-zA-Z0-9가-힣]{2,20}$/;
+
+            // 답변 검증 (공백이 아닌 2자 이상)
+            const answerRegex = /^.{2,}$/;
+
+            // 사용자 이름 검증
+            if (!userIdRegex.test(userId)) {
+                alert("사용자 이름은 2-20자의 영문, 한글, 숫자만 가능합니다.");
+                document.getElementById("user_name").focus();
+                event.preventDefault();
+                return false;
+            }
+
+            // 보안 질문 선택 검증
+            if (!question) {
+                alert("보안 질문을 선택해주세요.");
+                document.getElementById("question").focus();
+                event.preventDefault();
+                return false;
+            }
+
+            // 답변 검증
+            if (!answerRegex.test(answer)) {
+                alert("답변은 2자 이상 입력해주세요.");
+                document.getElementById("answer").focus();
+                event.preventDefault();
+                return false;
+            }
+
+            // 서버로 전송하기 전에 확인 메시지 표시
+            if (!confirm("입력하신 정보로 계정을 찾으시겠습니까?")) {
+                event.preventDefault();
+                return false;
+            }
+
+            return true; // 모든 검증 통과시 폼 제출 진행
+        });
+
+
+
+    });
+
+
+</script>
+
+</body>
+</html>

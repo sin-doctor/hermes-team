@@ -35,4 +35,13 @@ public class UserServiceImpl implements UserService {
         return duplicated;
     }
 
+    @Override
+    public User login(String user_id, String user_pw) {
+        return userMapper.login(user_id,user_pw);
+    }
+
+    @Override
+    public User login_search_completed(String user_name,String user_verification_answer) {
+        return userMapper.login_search_completed(user_name , user_verification_answer);
+    }
 }
