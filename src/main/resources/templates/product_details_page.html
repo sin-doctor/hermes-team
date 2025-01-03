@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hermes-Product_Details_Page</title>
+    <link href="/css/styles.css" rel="stylesheet">
+    <style>
+        .product-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 40px;
+            flex: 1;
+        }
+        .product-image {
+            width: 300px;
+            height: 300px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+        .product-image:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .product-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            max-width: 500px;
+        }
+        .product-container > .product-image {
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        .product-details h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+        .product-details p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        .product-description {
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            color: #666;
+            background-color: #cccccc;
+            border-radius: 3px;
+            padding: 30px;
+            max-width: 100%;
+        }
+        .size-selector {
+            margin-bottom: 20px;
+        }
+        select {
+            padding: 8px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 200px;
+        }
+        .buy-button {
+            background-color: #28a745;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            max-width: 200px;
+            margin-top: 20px;
+        }
+        .buy-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<th:block th:replace="~{layout/header :: header}"></th:block>
+
+<div class="product-container">
+    <div class="product-image">
+        <img th:src="@{${product.getProduct_image_path()}}" alt="제품 이미지" class="product-image"/>
+    </div>
+    <div class="product-details">
+        <h1 th:text="${product.getProduct_name()}">제품명</h1>
+        <p>가격: <strong th:text="${product.getProduct_price()+'원'}">₩XX,XXX</strong></p>
+        <div class="product-description">
+            <p th:text="${product.getProduct_description()}">상품 간략 설명</p>
+        </div>
+
+        <form action="/purchase_completed_page" method="post">
+            <div class="size-selector">
+                <label for="size">신발 사이즈 선택:</label>
+                <select id="size" name="size">
+                    <option th:each="size : ${sizes}"
+                            th:value="${size}"
+                            th:text="${size + 'mm'}">250mm
+                    </option>
+                </select>
+            </div>
+            <input type="hidden" name="productId" th:value="${product.getProduct_reg_num()}"/>
+            <button type="submit" class="buy-button">구매하기</button>
+        </form>
+    </div>
+</div>
+
+<th:block th:replace="~{layout/footer :: footer}"></th:block>
+
+</body>
+</html>

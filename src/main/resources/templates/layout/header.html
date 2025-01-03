@@ -1,0 +1,17 @@
+<header th:fragment="header" xmlns="http://www.w3.org/1999/html">
+    <div class="logo">
+        <a href="/"><img src="/images/hermes-logo.png" alt="Hermes Logo"></a>
+    </div>
+    <nav>
+        <a href="Category_Page">운동화</a>
+        <a href="#">캔버스화</a>
+        <a href="#">스니커즈</a>
+        <a href="#">부츠</a>
+        <a href="#">CROCS</a>
+    </nav>
+    <div class="sign-in">
+        <a th:if="${session.userId == null}" href="/login">Sign In</a> <!-- 로그인 상태가 아니면 'Sign In' 표시 -->
+        <a th:if="${session.userId != null}" href="/logout">Log Out</a> <!-- 로그인 상태면 'Log Out' 표시 -->
+        <a href="/my_page"></a><img src="/images/user-icon.png" alt="User Icon" ></a>
+    </div>
+</header>

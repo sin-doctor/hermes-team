@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hermes-Purchase_Completed</title>
+  <link href="/css/styles.css" rel="stylesheet">
+  <style>
+    .purchase-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .purchase-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .purchase-details {
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .purchase-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .purchase-image {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+    }
+
+    .item-details {
+      flex-grow: 1;
+    }
+
+    .success-message {
+      color: #28a745;
+      font-size: 1.2em;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .home-button {
+      display: block;
+      width: 200px;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .home-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+<th:block th:replace="~{layout/header :: header}"></th:block>
+
+<div class="purchase-container">
+  <div class="purchase-header">
+    <h1>구매가 완료되었습니다!</h1>
+    <p class="success-message">구매해 주셔서 감사합니다.</p>
+  </div>
+
+  <div class="purchase-details">
+    <h2>구매 상세 정보</h2>
+    <div class="purchase-item">
+      <img th:src="${product.getProduct_image_path()}" alt="제품 이미지" class="purchase-image"/>
+      <div class="item-details">
+        <h3 th:text="${product.getProduct_name()}">제품명</h3>
+        <p>선택한 사이즈: <span th:text="${selectedSize + 'mm'}">250mm</span></p>
+        <p>구매 가격: <strong th:text="${product.getProduct_price()} + '원'">₩XX,XXX</strong></p>
+        <p>주문 번호: <span th:text="${purchase.getPurchase_order_id()}"></span></p>
+        <p>구매 일시: <span th:text="${#dates.format(purchase.purchase_date, 'yyyy-MM-dd HH:mm:ss')}"></span></p>
+      </div>
+    </div>
+  </div>
+
+  <a href="/" class="home-button">구매내역보기</a>
+</div>
+
+<th:block th:replace="~{layout/footer :: footer}"></th:block>
+</body>
+</html>
