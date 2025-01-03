@@ -24,16 +24,42 @@ import java.util.List;
 @Controller
 public class IndexController {
 
-    private final ProductService productService;
-    private final UserService userService;
-    private final PurchaseService purchaseService;
-
     @Autowired
-    public IndexController(ProductService productService, UserService userService, PurchaseService purchaseService) {
-        this.productService = productService;
-        this.userService = userService;
-        this.purchaseService = purchaseService;
+    private ProductService productService;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private PurchaseService purchaseService;
+
+
+
+    /**
+     * List<Product>  products   =   productService.getAllIndexProducts(); //productService 에 있는 getAllIndexProducts 가져오기
+     * @param model html에 보내기 위한 model
+     * @return index.html 페이지에 products로 불러온 모든 제품리스트를 전달
+     */
+    @GetMapping("/")
+    public String index(HttpSession session,  Model model) {
+        Object user = session.getAttribute("loggedInUser");
+        model.addAttribute("loggedInUser", user);
+        List<Product>  products   =   productService.getAllIndexProducts();
+        model.addAttribute("products", products);
+        return "index";
     }
+
+    /**
+     * @param product_category 카테고리에 해당하는 리스트만 가져오기 위해 카테고리 변수 문자열로 선언
+     * @param model html thymeleaf 에 보내기 위한 model
+     * List<Product>  products   =   productService.getCategoryList(product_category); //productService 에 있는 getCategoryList 가져오기
+     * @return category_page.html 페이지에 카테고리별 해당 상품 리스트를 전달
+     */
+    @GetMapping("/category_page/{product_category}")
+    public String CategoryPage(@PathVariable String product_category, Model model) {
+        List<Product>  products   =   productService.getCategoryList(product_category);
+        model.addAttribute("products", products);
+        return "category_page";
+    }
+
     // 회원가입 페이지 이동
     @GetMapping("/signup")
     public String signup() {

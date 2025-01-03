@@ -35,18 +35,17 @@ public class LoginController {
     public String login(){
         return "login";
     }
+
     @PostMapping("/login")
-    public String login(@RequestParam("user_id") String user_id,
-                        @RequestParam("user_pw") String user_pw,
-                        Model model,
-                        HttpSession session) {
+    public String login(@RequestParam String user_id, @RequestParam String user_pw, HttpSession session, Model model) {
         User user = userService.login(user_id, user_pw);
-        System.out.println(user);
-        if(user!=null){
+
+        if (user != null) {
             session.setAttribute("loggedInUser", user);
+            System.out.println(session.getAttribute("loggedInUser"));
             return "redirect:/";
-        }else {
-            model.addAttribute("fail","유효하지 않은 아이디 또는 비밀번호 입니다");
+        } else {
+            model.addAttribute("error", "유효하지 않은 유저이름 또는 비밀번호입니다.");
             return "login";
         }
     }

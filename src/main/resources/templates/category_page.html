@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xml:th="http://www.thymeleaf.org" lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hermes</title>
+  <style>
+    /*********************************
+                Category_page
+                category_container
+        *********************************/
+    /*전제척인 정렬 설정*/
+    .category_container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      gap: 20px;
+    }
+
+    /*이미지 리스트 설정*/
+    .category_container .category_list{
+      text-align: center;
+      width: 300px;
+      flex-direction: column;
+      display: flex;
+    }
+
+    /*이미지 상세설정*/
+    .category_container .category_imagelist {
+      width: 100%;
+      height: 300px;
+      border: 1px solid black;
+      margin: 60px 0;
+    }
+
+    /*텍스트 설정*/
+    .category_container .category_listname {
+      display: block;
+      margin-top: 5px;
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    /*링크 스타일*/
+    .category_container .category_link {
+      text-decoration-line: none;
+      color: black;
+    }
+
+    /*방문 전후 링크 색깔변경*/
+    .category_container .category_link a:link,a:visited {
+      color: black;
+    }
+  </style>
+  <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<th:block th:replace="~{layout/header :: header}"></th:block>
+<div class="category_container">
+  <!-- index와 마찬가지로 products 리스트로 불러와서 each문으로 하나씩 해당 값을 출력하기-->
+  <div class="category_list" th:each="p : ${products}">
+    <a class="category_link" th:href="@{/product_details_page/${p.product_reg_num}}"><img class="category_imagelist" th:src="${p.product_image_path}" alt="제품 리스트">
+    <span class="category_listname" th:text="${p.product_name}"></span></a>
+  </div>
+</div>
+
+<th:block th:replace="~{layout/footer :: footer}"></th:block>
+</body>
