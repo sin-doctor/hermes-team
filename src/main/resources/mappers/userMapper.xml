@@ -34,17 +34,11 @@
           AND user_verification_answer = #{user_verification_answer}
     </select>
 
-    <select id="myPageService_getUserPurchase">
-        select *
-        from PURCHASE
-        WHERE PURCHASE_USER_ID = #{user_id}
-        ORDER BY PURCHASE_DATE DESC, PURCHASE_ORDER_ID DESC
-    </select>
-
     <update id="myPage_infoCorrection">
         update USER
         SET USER_VERIFICATION_ANSWER = #{user_verification_answer}, USER_PW = #{user_pw}
         WHERE USER_ID = #{user_id}
+
     </update>
 
     <select id="myPageService_getUserPurchase2">
@@ -60,5 +54,6 @@
         join product D
         on C.purchase_product_reg_num = D.product_reg_num
         WHERE C.PURCHASE_USER_ID = #{user_id}
+        ORDER BY PURCHASE_DATE DESC, PURCHASE_ORDER_ID DESC
     </select>
 </mapper>

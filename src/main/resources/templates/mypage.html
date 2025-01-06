@@ -115,13 +115,6 @@
     <div class="my_page_user_purchase_history">
         <h3 class="my_page_bold_span">구매 내역</h3>
 
-<!--        <div class="my_page_purchase_each" th:each="p : ${purchases}">-->
-<!--            <p th:text="'주문 번호: ' + ${p.purchase_order_id}"></p>-->
-<!--            <p th:text="'신발 사이즈: ' + ${p.purchase_product_size}"></p>-->
-<!--            <p th:text="'구매일: ' + ${p.purchase_date}"></p>-->
-<!--            <p th:text="'배송 상태: ' + ${p.purchase_status}"></p>-->
-<!--        </div>-->
-
         <div class="my_page_purchase_each" th:each="p2 : ${purchases2}">
             <img class="my_page_img" th:src="${p2.product_image_path}" alt="제품 이미지">
             <div class = "my_page_purchase_each_text">
