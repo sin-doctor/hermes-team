@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hermes</title>
+    <link href="/css/styles.css" rel="stylesheet">
+    <style>
+        .my_page_personal_container .infoCorrection_container {
+            text-align: left;
+            margin-left: 400px;
+            margin-right: 400px;
+            padding-left: 50px;
+        }
+
+        .my_page_personal_container .infoCorrection_container label {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .my_page_personal_container .submit_button {
+            text-align: center;
+            padding: 10px;
+            background-color: #84CEB0;
+            border: none;
+            border-radius: 15px;
+            font-size: 15px;
+        }
+
+        .my_page_personal_container .submit_button:hover {
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="my_page_personal_container">
+    <th:block th:replace="layout/header :: header"></th:block>
+    <br>
+    <form class="infoCorrection_container" action="myPage_infoCorrection_success" method="post" enctype="application/x-www-form-urlencoded">
+        <label for="user_verification_answer">본인확인 질문 답</label>
+        <br>
+        <br>
+        <input type="text" id="user_verification_answer" name="user_verification_answer" required>
+        <br>
+        <br>
+        <label for="user_pw">비밀번호</label>
+        <br>
+        <br>
+        <input type="password" id="user_pw" name="user_pw" required>
+        <br>
+        <br>
+<!--        <label for="password_check">비밀번호 확인</label>-->
+<!--        <br>-->
+<!--        <input type="password" id="password_check" name="password_check" required>-->
+        <button class="submit_button" type="submit">수정하기</button>
+    </form>
+    <th:block th:replace="layout/footer :: footer"></th:block>
+</div>
+
+</body>
+</html>

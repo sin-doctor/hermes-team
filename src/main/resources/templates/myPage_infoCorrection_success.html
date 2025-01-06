@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hermes</title>
+    <link href="/css/styles.css" rel="stylesheet">
+    <style>
+    .my_page_personal_container .return_href {
+        text-align: center;
+        padding : 50px;
+    }
+    .my_page_personal_container .return_href .href_button {
+        border: none;
+        border-radius: 15px;
+        padding: 10px;
+        background-color: #84CEB0;
+    }
+    .my_page_personal_container .return_href .href_button:hover {
+        cursor: pointer;
+        background-color: mediumseagreen;
+        font-weight: bold;
+    }
+    </style>
+</head>
+<body>
+
+<div class="my_page_personal_container">
+    <th:block th:replace="layout/header :: header"></th:block>
+    <div class="return_href">
+        <h3>회원정보가 수정되었습니다</h3>
+        <br>
+        <br>
+        <button type="button" onclick="location.href='mypage'" class="href_button">마이페이지로 돌아가기</button>
+    </div>
+    <th:block th:replace="layout/footer :: footer"></th:block>
+</div>
+
+</body>
+</html>

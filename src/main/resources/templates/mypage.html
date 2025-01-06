@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hermes</title>
+    <style>
+        .my_page_container .my_page_user_information {
+            text-align: left;
+            margin-left: 400px;
+            margin-right: 400px;
+            border: 2px solid #84CEB0;
+            border-radius: 50px;
+            padding-left: 50px;
+        }
+
+        .my_page_container .my_page_infoCorrection_href {
+            text-align: right;
+            margin-right: 50px;
+            margin-bottom: 20px;
+        }
+
+        .my_page_container .href_button {
+            text-align: center;
+            padding: 15px;
+            background-color: #84CEB0;
+            border: none;
+            border-radius: 25px;
+            font-size: 20px;
+        }
+
+        .my_page_container .href_button:hover {
+            background-color: mediumseagreen;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .my_page_container .my_page_bold_span {
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .my_page_container .my_page_normal_span {
+            font-size: 18px;
+            vertical-align: 3px;
+        }
+
+        .my_page_container .my_page_user_purchase_history {
+            margin-left: 400px;
+            margin-right: 400px;
+        }
+
+        .my_page_container .my_page_user_purchase_history .my_page_purchase_each {
+            border: 2px solid black;
+            border-radius: 25px;
+            padding: 20px 50px;
+        }
+
+    </style>
+    <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="my_page_container">
+    <th:block th:replace="~{layout/header :: header}"></th:block>
+    <br>
+    <div class="my_page_user_information">  <!-- 현재 로그인한 유저 정보 보여주는 div -->
+        <br>
+        <br>
+        <span class="my_page_bold_span">아이디</span>
+        <span class="my_page_normal_span" th:text="${loggedInUser.user_id}"></span>
+        <br>
+        <br>
+        <br>
+        <span class="my_page_bold_span">이름</span>
+        <span class="my_page_normal_span" th:text="${loggedInUser.user_name}"></span>
+        <br>
+        <br>
+        <br>
+        <span class="my_page_bold_span">본인확인 질문 답</span>
+        <span class="my_page_normal_span" th:text="${loggedInUser.user_verification_answer}"></span>
+        <br>
+        <br>
+        <br>
+        <div class="my_page_infoCorrection_href">
+            <button type="button" onclick="location.href='myPage_infoCorrection'" class="href_button">정보 수정하기</button>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="my_page_user_purchase_history">
+        <h3 class="my_page_bold_span">구매 내역</h3>
+
+        <div class="my_page_purchase_each" th:each="p : ${purchases}">
+            <p th:text="'주문 번호: ' + ${p.purchase_order_id}"></p>
+            <p th:text="'신발 사이즈: ' + ${p.purchase_product_size}"></p>
+            <p th:text="'구매일: ' + ${p.purchase_date}"></p>
+            <p th:text="'배송 상태: ' + ${p.purchase_status}"></p>
+        </div>
+
+    </div>
+
+    <th:block th:replace="~{layout/footer :: footer}"></th:block>
+</div>
+
+</body>
+</html>

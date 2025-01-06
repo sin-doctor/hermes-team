@@ -38,4 +38,16 @@
     WHERE user_name= #{user_name}
     AND user_verification_answer = #{user_verification_answer}
     </select>
+
+    <select id="myPageService_getUserPurchase">
+        select *
+        from PURCHASE
+        WHERE PURCHASE_USER_ID = #{user_id}
+    </select>
+
+    <update id="myPage_infoCorrection">
+        update USER
+        SET USER_VERIFICATION_ANSWER = #{user_verification_answer}, USER_PW = #{user_pw}
+        WHERE USER_ID = #{user_id}
+    </update>
 </mapper>
