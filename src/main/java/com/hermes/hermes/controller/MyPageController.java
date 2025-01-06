@@ -26,12 +26,16 @@ public class MyPageController {
         Object user = session.getAttribute("loggedInUser"); // 현재 세션에 로그인한 유저를 Object 자료형의 user 라는 이름으로 받아옴
         model.addAttribute("loggedInUser", user); // model 함수를 통해 user 객체를 loggedInUser 라는 이름으로 프론트에 전송함
         List<Map<String, Object>> purchases; // 구매내역 리스트를 보여주기 위해 List 선언
+        List<Map<String, Object>> purchases2; // 구매내역 리스트를 보여주기 위해 List 선언 2
 
         if (user != null) { // 로그인 유저가 있다면(=not null) 이라면
             User currentUser = (User) session.getAttribute("loggedInUser"); // Session 에서 현재 로그인한 유저를 currentUser 라는 이름으로 받아옴
             String user_id = currentUser.getUser_id(); // 현재 로그인한 유저의 user_id를 String 형태로 user_id로 저장
+            System.out.println(user_id);
             purchases = myPageService.myPageService_getUserPurchase(user_id); // List<Map> purchases 에 user_id를 넣어 해당 user_id 와 일치하는 PURCHASE 의 리스트를 가져옴
+            purchases2 = myPageService.myPageService_getUserPurchase2(user_id); // List<Map> purchases2 에 user_id를 넣어 해당 user_id 와 일치하는 PURCHASE2 의 리스트를 가져옴
             model.addAttribute("purchases", purchases); // purchases 객체를 purchases 라는 이름으로 프론트에 전달
+            model.addAttribute("purchases2", purchases2); // purchases2 객체를 purchases2 라는 이름으로 프론트에 전달
             return "mypage";
         }
 

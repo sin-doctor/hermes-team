@@ -1,6 +1,7 @@
 package com.hermes.hermes.service;
 
 import com.hermes.hermes.dto.Purchase;
+import com.hermes.hermes.dto.PurchaseProductJoin;
 import com.hermes.hermes.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,23 @@ public class MyPageServiceImpl implements MyPageService {
             purchaseMap.put("purchase_date", purchase.getPurchase_date());
             purchaseMap.put("purchase_status", purchase.getPurchase_status());
             return purchaseMap;
+        }).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Map<String, Object>> myPageService_getUserPurchase2(String user_id) {
+        List<PurchaseProductJoin> purchaseList = myPageMapper.myPageService_getUserPurchase2(user_id);
+        return purchaseList.stream().map(purchaseProductJoin -> {
+            Map<String, Object> purchaseProductJoinMap = new HashMap<>();
+            purchaseProductJoinMap.put("product_image", purchaseProductJoin.getProduct_image());
+            purchaseProductJoinMap.put("product_name", purchaseProductJoin.getProduct_name());
+            purchaseProductJoinMap.put("product_price", purchaseProductJoin.getProduct_price());
+            purchaseProductJoinMap.put("product_size", purchaseProductJoin.getProduct_size());
+            purchaseProductJoinMap.put("purchase_date", purchaseProductJoin.getPurchase_date());
+            purchaseProductJoinMap.put("purchase_order_id", purchaseProductJoin.getPurchase_order_id());
+            purchaseProductJoinMap.put("purchase_product_size", purchaseProductJoin.getPurchase_product_size());
+            purchaseProductJoinMap.put("purchase_status", purchaseProductJoin.getPurchase_status());
+            return purchaseProductJoinMap;
         }).collect(Collectors.toList());
     }
 

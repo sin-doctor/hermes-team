@@ -43,6 +43,7 @@
         select *
         from PURCHASE
         WHERE PURCHASE_USER_ID = #{user_id}
+        ORDER BY PURCHASE_DATE DESC
     </select>
 
     <update id="myPage_infoCorrection">
@@ -50,4 +51,19 @@
         SET USER_VERIFICATION_ANSWER = #{user_verification_answer}, USER_PW = #{user_pw}
         WHERE USER_ID = #{user_id}
     </update>
+
+    <select id="myPageService_getUserPurchase2">
+        select D.product_image as product_image,
+               D.product_name  as product_name,
+               D.product_price  as product_price,
+               D.product_size as product_size,
+               C.purchase_date as purchase_date,
+               C.purchase_order_id as purchase_order_id,
+               C.purchase_product_size as purchase_product_size,
+               C.purchase_status  as purchase_status
+        from purchase C
+        join product D
+        on C.purchase_product_reg_num = D.product_reg_num
+        WHERE C.PURCHASE_USER_ID = #{user_id}
+    </select>
 </mapper>

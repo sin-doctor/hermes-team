@@ -1,6 +1,7 @@
 package com.hermes.hermes.mapper;
 
 import com.hermes.hermes.dto.Purchase;
+import com.hermes.hermes.dto.PurchaseProductJoin;
 import com.hermes.hermes.dto.User;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -28,4 +29,5 @@ public interface UserMapper {
     // 세션에서 유저 User 객체 받아와서 user_id 가 일치하는 User 정보 수정하기
     void myPage_infoCorrection(String user_id, String user_verification_answer, String user_pw);
 
+    List<PurchaseProductJoin> myPageService_getUserPurchase2(String user_id);
 }
