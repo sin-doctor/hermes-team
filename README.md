@@ -162,9 +162,3 @@ khtAcademy
 
 ---
 
-## 문의
-
-프로젝트와 관련하여 문의 사항이 있으면 아래 이메일로 연락주세요.
-
-- Email: [your_email@example.com](mailto:your_email@example.com)
-
