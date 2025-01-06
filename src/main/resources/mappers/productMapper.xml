@@ -11,4 +11,16 @@
         FROM product
         WHERE product_reg_num = #{product_reg_num}
     </select>
+
+    <!-- index 모든 상품 데이터 목록 조회 -->
+    <select id="getAllIndexProducts">
+        SELECT * FROM product
+    </select>
+
+    <!-- 카테고리로 product리스트 가져오기-->
+    <select id="getCategoryList">
+        SELECT *
+        FROM PRODUCT
+        WHERE product_category = #{product_category}
+    </select>
 </mapper>

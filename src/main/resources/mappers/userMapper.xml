@@ -14,4 +14,51 @@
         FROM USER
         WHERE user_id = #{user_id}
     </select>
+
+
+    <select id="getAllUsers" >
+        SELECT * FROM USER
+    </select>
+
+    <select id="login">
+        SELECT *
+        FROM USER
+        WHERE USER_ID = #{user_id}
+          AND USER_PW = #{user_pw}
+    </select>
+
+    <select id="login_search_completed">
+        SELECT *
+        FROM USER
+        WHERE user_name= #{user_name}
+          AND user_verification_answer = #{user_verification_answer}
+    </select>
+
+    <select id="myPageService_getUserPurchase">
+        select *
+        from PURCHASE
+        WHERE PURCHASE_USER_ID = #{user_id}
+        ORDER BY PURCHASE_DATE DESC, PURCHASE_ORDER_ID DESC
+    </select>
+
+    <update id="myPage_infoCorrection">
+        update USER
+        SET USER_VERIFICATION_ANSWER = #{user_verification_answer}, USER_PW = #{user_pw}
+        WHERE USER_ID = #{user_id}
+    </update>
+
+    <select id="myPageService_getUserPurchase2">
+        select D.product_image_path as product_image_path,
+               D.product_name  as product_name,
+               D.product_price  as product_price,
+               D.product_size as product_size,
+               C.purchase_date as purchase_date,
+               C.purchase_order_id as purchase_order_id,
+               C.purchase_product_size as purchase_product_size,
+               C.purchase_status  as purchase_status
+        from purchase C
+        join product D
+        on C.purchase_product_reg_num = D.product_reg_num
+        WHERE C.PURCHASE_USER_ID = #{user_id}
+    </select>
 </mapper>

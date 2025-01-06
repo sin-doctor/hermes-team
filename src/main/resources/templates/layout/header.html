@@ -3,15 +3,17 @@
         <a href="/"><img src="/images/hermes-logo.png" alt="Hermes Logo"></a>
     </div>
     <nav>
-        <a href="Category_Page">운동화</a>
-        <a href="#">캔버스화</a>
-        <a href="#">스니커즈</a>
-        <a href="#">부츠</a>
-        <a href="#">CROCS</a>
+        <a href="/category_page/운동화">운동화</a>
+        <a href="/category_page/캔버스화">캔버스화</a>
+        <a href="/category_page/스니커즈">스니커즈</a>
+        <a href="/category_page/부츠">부츠</a>
+        <a href="/category_page/CROCS">CROCS</a>
     </nav>
     <div class="sign-in">
-        <a th:if="${session.userId == null}" href="/login">Sign In</a> <!-- 로그인 상태가 아니면 'Sign In' 표시 -->
-        <a th:if="${session.userId != null}" href="/logout">Log Out</a> <!-- 로그인 상태면 'Log Out' 표시 -->
+        <a th:if="${loggedInUser == null}" href="/signup">회원가입</a>
+        <a th:if="${loggedInUser == null}" href="/login">로그인</a>
+        <a th:if="${loggedInUser != null}" href="/mypage">마이페이지</a>
+        <a th:if="${loggedInUser != null}" href="/logout">로그아웃</a>
         <a href="/my_page"></a><img src="/images/user-icon.png" alt="User Icon" ></a>
     </div>
 </header>

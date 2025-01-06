@@ -7,13 +7,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PurchaseServiceImpl implements PurchaseService {
-
-    private final PurchaseMapper purchaseMapper;
-
     @Autowired
-    public PurchaseServiceImpl(PurchaseMapper purchaseMapper) {
-        this.purchaseMapper = purchaseMapper;
-    }
+    private  PurchaseMapper purchaseMapper;
 
     @Override
     public void savePurchase(Purchase purchase) {
