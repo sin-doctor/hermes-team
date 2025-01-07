@@ -28,6 +28,7 @@ public class LoginController {
     public Object addLoggedInUserToModel(HttpSession session) {
         return session.getAttribute("loggedInUser");
     }
+
     @GetMapping("/login")
     public String login(){
         return "login";

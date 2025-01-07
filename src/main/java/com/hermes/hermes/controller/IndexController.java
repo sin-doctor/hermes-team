@@ -30,6 +30,12 @@ public class IndexController {
     @Autowired
     private PurchaseService purchaseService;
 
+    /**
+     * ModelAttribute: 모든 메서드 호출 전에 공통적으로 실행
+     * 세션에서 로그인된 사용자 정보를 가져와 모델에 추가
+     * @param session HttpSession 객체를 통해 사용자 세션 관리
+     * @param model HTML 렌더링에 필요한 데이터를 추가하는 Model 객체
+     */
     @ModelAttribute
     public void addLoggedInUserToModel(HttpSession session, Model model) {
         Object user = session.getAttribute("loggedInUser");
@@ -62,13 +68,21 @@ public class IndexController {
         return "category_page";
     }
 
-    // 회원가입 페이지 이동
+    /**
+     * 회원가입 페이지로 이동
+     * @return signup.html 페이지 반환
+     */
     @GetMapping("/signup")
     public String signup() {
         return "signup";
     }
 
-    // 회원가입 완료 처리
+    /**
+     * 회원가입 완료 처리
+     * @param user 사용자 정보가 포함된 User 객체
+     * @return 회원가입 성공 페이지 반환
+     * @throws IllegalArgumentException 필수 정보가 누락된 경우
+     */
     @PostMapping("/signup-success")
     public String signup(@ModelAttribute User user) {
         if (user.getUser_id() == null || user.getUser_id().isEmpty()) {
@@ -78,7 +92,13 @@ public class IndexController {
         return "signup-success";
     }
 
-    // 아이디 중복확인
+    /**
+     * 아이디 중복 확인 AJAX 요청 처리
+     * @param user_id 중복 확인할 사용자 ID
+     * @param response HttpServletResponse 객체로 JSON 응답 전송
+     * @throws IOException 응답 작성 실패 시 예외 발생
+     */
+
     @PostMapping("/check-user_id")
     public void checkDuplicatedUserId(@RequestParam("user_id") String user_id,
                                       HttpServletResponse response
@@ -88,7 +108,13 @@ public class IndexController {
         response.getWriter().write("{\"isDuplicate\" : " + isDuplicate + "}");
     }
 
-    // 제품 상세 페이지
+    /**
+     * 제품 상세 페이지로 이동
+     * @param product_reg_num 제품 등록 번호 (URL 경로에서 추출)
+     * @param model HTML 렌더링에 필요한 데이터를 추가하는 Model 객체
+     * @return product_details_page.html 페이지 반환
+     */
+
     @GetMapping("/product_details_page/{product_reg_num}")
     public String productDetailsPage(@PathVariable int product_reg_num, Model model) {
         Product product = productService.getProduct(product_reg_num);
@@ -103,7 +129,17 @@ public class IndexController {
 
         return "product_details_page";
     }
-    // 구매 완료 페이지
+
+    /**
+     * 구매 완료 페이지로 이동
+     * 구매 정보를 생성하고 저장한 뒤 페이지에 전달
+     * @param productRegNum 구매한 제품 등록 번호
+     * @param selectedSize 선택한 제품 크기
+     * @param session HttpSession 객체로 로그인된 사용자 정보 관리
+     * @param model HTML 렌더링에 필요한 데이터를 추가하는 Model 객체
+     * @return purchase_completed_page.html 페이지 반환
+     */
+
     @PostMapping("/purchase_completed_page")
     public String purchaseCompletedPage(
             @RequestParam("productId") int productRegNum,
@@ -145,6 +181,12 @@ public class IndexController {
 
         return "purchase_completed_page"; // 구매 완료 페이지로 리턴
     }
+
+    /**
+     * 주문 번호 생성
+     * 현재 시간과 랜덤 숫자를 조합해 고유한 주문 번호 생성
+     * @return 생성된 주문 번호 문자열
+     */
 
     private String generateOrderId() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
