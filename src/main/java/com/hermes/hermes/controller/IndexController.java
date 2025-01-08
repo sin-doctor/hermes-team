@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -47,14 +48,19 @@ public class IndexController {
      * @return index.html 페이지에 products로 불러온 모든 제품리스트를 전달
      */
     @GetMapping("/")
-    public String index(HttpSession session,  Model model) {
+    public String index(HttpSession session, Model model) {
         Object user = session.getAttribute("loggedInUser");
         model.addAttribute("loggedInUser", user);
-        List<Product>  products   =   productService.getAllIndexProducts();
-        model.addAttribute("products", products);
+
+        List<Product> products = productService.getAllIndexProducts();
+        List<Product> recommendedProducts = products.stream()
+                .limit(6)
+                .toList();
+        model.addAttribute("products", recommendedProducts);
+        System.out.println(recommendedProducts);
+
         return "index";
     }
-
     /**
      * @param product_category 카테고리에 해당하는 리스트만 가져오기 위해 카테고리 변수 문자열로 선언
      * @param model html thymeleaf 에 보내기 위한 model

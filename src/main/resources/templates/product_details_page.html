@@ -16,7 +16,7 @@
     </div>
     <div class="product-details">
         <h1 th:text="${product.getProduct_name()}">제품명</h1>
-        <p>가격: <strong th:text="${product.getProduct_price()+'원'}">₩XX,XXX</strong></p>
+
         <div class="product-description">
             <p th:text="${product.getProduct_description()}">상품 간략 설명</p>
         </div>
@@ -31,8 +31,11 @@
                     </option>
                 </select>
             </div>
-            <input type="hidden" name="productId" th:value="${product.getProduct_reg_num()}"/>
-            <button type="submit" class="buy-button">구매하기</button>
+            <div class="price-and-button">
+                <p class="price">가격: <strong th:text="${product.getProduct_price()+'원'}">₩XX,XXX</strong></p>
+                <input type="hidden" name="productId" th:value="${product.getProduct_reg_num()}"/>
+                <button type="submit" class="buy-button">구매하기</button>
+            </div>
         </form>
     </div>
 </div>

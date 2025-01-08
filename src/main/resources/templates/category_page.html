@@ -8,14 +8,28 @@
 </head>
 <body>
 <th:block th:replace="~{layout/header :: header}"></th:block>
+
+<!-- 카테고리 섹션 -->
+<section class="category_intro">
+  <p>
+    다양한 스타일과 품질을 자랑하는 신발 컬렉션을 만나보세요.    <br>
+    캐주얼한 데일리 룩부터 격식을 갖춘 스타일까지,    <br>
+    모든 순간을 더욱 빛나게 해줄 제품들이 준비되어 있습니다. <br>
+    편안함과 세련된 디자인이 조화를 이루는 최고의 신발을 지금 확인하세요.
+  </p>
+
+</section>
+
 <div class="category_container">
-  <!-- index와 마찬가지로 products 리스트로 불러와서 each문으로 하나씩 해당 값을 출력하기-->
   <div class="category_list" th:each="p : ${products}">
-    <a class="category_link" th:href="@{/product_details_page/{id}(id=${p.product_reg_num})}"><img class="category_imagelist" th:src="${p.product_image_path}" alt="제품 리스트">
+    <a class="category_link" th:href="@{/product_details_page/{id}(id=${p.product_reg_num})}">
+      <img class="category_imagelist" th:src="${p.product_image_path}" alt="제품 리스트">
       <span class="category_listtagstyle" th:text="${p.product_name}"></span>
-      <span class="category_listtagstyle" th:text="${p.product_price} + 원"></span></a>
+      <span class="category_listtagstyle" th:text="${p.product_price} + ' 원'"></span>
+    </a>
   </div>
 </div>
 
 <th:block th:replace="~{layout/footer :: footer}"></th:block>
 </body>
+</html>

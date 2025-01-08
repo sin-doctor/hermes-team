@@ -10,52 +10,34 @@
 
 <div class="my_page_container">
     <th:block th:replace="~{layout/header :: header}"></th:block>
-    <br>
-    <div class="my_page_h3">
-        <h3 class="my_page_bold_span">회원 정보</h3>
-    </div>
-    <div class="my_page_user_information">  <!-- 현재 로그인한 유저 정보 보여주는 div -->
-        <br>
-        <br>
-        <span class="my_page_bold_span">아이디</span>
-        <span class="my_page_normal_span" th:text="${loggedInUser.user_id}"></span>
-        <br>
-        <br>
-        <br>
-        <span class="my_page_bold_span">이름</span>
-        <span class="my_page_normal_span" th:text="${loggedInUser.user_name}"></span>
-        <br>
-        <br>
-        <br>
-        <span class="my_page_bold_span">본인확인 질문 답</span>
-        <span class="my_page_normal_span" th:text="${loggedInUser.user_verification_answer}"></span>
-        <br>
-        <br>
-        <br>
-        <div class="my_page_infoCorrection_href">
-            <button type="button" onclick="location.href='myPage_infoCorrection'" class="href_button">정보 수정하기</button>
-        </div>
-    </div>
 
-    <br>
-    <br>
-    <br>
-
-    <div class="my_page_user_purchase_history">
-        <h3 class="my_page_bold_span">구매 내역</h3>
-
-        <div class="my_page_purchase_each" th:each="p2 : ${purchases2}">
-            <img class="my_page_img" th:src="${p2.product_image_path}" alt="제품 이미지">
-            <div class = "my_page_purchase_each_text">
-                <p th:text="'제품 이름: ' + ${p2.product_name}"></p>
-                <p th:text="'제품 가격: ' + ${p2.product_price}"></p>
-                <p th:text="'구매 일자: ' + ${p2.purchase_date}"></p>
-                <p th:text="'주문 번호: ' + ${p2.purchase_order_id}"></p>
-                <p th:text="'상품 사이즈: ' + ${p2.purchase_product_size}"></p>
-                <p th:text="'배송 상태: ' + ${p2.purchase_status}"></p>
+    <div class="my_page_section">
+        <h3 class="my_page_title">회원 정보</h3>
+        <div class="my_page_user_information">
+            <p><span class="my_page_bold_span">아이디</span>: <span class="my_page_normal_span" th:text="${loggedInUser.user_id}"></span></p>
+            <p><span class="my_page_bold_span">이름</span>: <span class="my_page_normal_span" th:text="${loggedInUser.user_name}"></span></p>
+            <p><span class="my_page_bold_span">본인확인 질문 답</span>: <span class="my_page_normal_span" th:text="${loggedInUser.user_verification_answer}"></span></p>
+            <div class="my_page_infoCorrection_href">
+                <button type="button" onclick="location.href='myPage_infoCorrection'" class="href_button">정보 수정하기</button>
             </div>
         </div>
+    </div>
 
+    <div class="my_page_section">
+        <h3 class="my_page_title">구매 내역</h3>
+        <div class="my_page_user_purchase_history">
+            <div class="my_page_purchase_each" th:each="p2 : ${purchases2}">
+                <img class="my_page_img" th:src="${p2.product_image_path}" alt="제품 이미지">
+                <div class="my_page_purchase_each_text">
+                    <p th:text="'제품 이름: ' + ${p2.product_name}"></p>
+                    <p th:text="'제품 가격: ' + ${p2.product_price}"></p>
+                    <p th:text="'구매 일자: ' + ${p2.purchase_date}"></p>
+                    <p th:text="'주문 번호: ' + ${p2.purchase_order_id}"></p>
+                    <p th:text="'상품 사이즈: ' + ${p2.purchase_product_size}"></p>
+                    <p th:text="'배송 상태: ' + ${p2.purchase_status}"></p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <th:block th:replace="~{layout/footer :: footer}"></th:block>

@@ -3,17 +3,17 @@
         <a href="/"><img src="/images/hermes-logo.png" alt="Hermes Logo"></a>
     </div>
     <nav>
-        <a href="/category_page/운동화">운동화</a>
-        <a href="/category_page/컨버스">캔버스화</a>
-        <a href="/category_page/스니커즈">스니커즈</a>
-        <a href="/category_page/부츠">부츠</a>
-        <a href="/category_page/크록스">CROCS</a>
+        <a th:classappend="${currentCategory == '운동화' ? 'active' : ''}" href="/category_page/운동화">운동화</a>
+        <a th:classappend="${currentCategory == '컨버스' ? 'active' : ''}" href="/category_page/컨버스">캔버스화</a>
+        <a th:classappend="${currentCategory == '스니커즈' ? 'active' : ''}" href="/category_page/스니커즈">스니커즈</a>
+        <a th:classappend="${currentCategory == '부츠' ? 'active' : ''}" href="/category_page/부츠">부츠</a>
+        <a th:classappend="${currentCategory == '크록스' ? 'active' : ''}" href="/category_page/크록스">CROCS</a>
     </nav>
     <div class="sign-in">
         <a th:if="${loggedInUser == null}" href="/signup">회원가입</a>
         <a th:if="${loggedInUser == null}" href="/login">로그인</a>
         <a th:if="${loggedInUser != null}" href="/mypage">마이페이지</a>
         <a th:if="${loggedInUser != null}" href="/logout">로그아웃</a>
-        <a href="/my_page"></a><img src="/images/user-icon.png" alt="User Icon" ></a>
+        <a href="/my_page"><img src="/images/user-icon.png" alt="User Icon"></a>
     </div>
 </header>

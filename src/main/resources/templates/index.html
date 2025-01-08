@@ -13,19 +13,35 @@
     <!-- 메인 이미지 -->
     <!-- 이미지를 조건문으로 하나만 들고오기-->
     <!-- mainnumStat 는 변수명(mainnum) + status 변수 -> status 문은 th:each 문에서 반복상태를 추척할 수 있는 변수 -->
-    <div class="index_main" th:each="i, mainnumStat : ${products}">
-        <img class="index_mainImage" th:if="${mainnumStat.index == 50}" th:src="${i.product_image_path}" alt="제품 이미지">
+    <!-- 메인 이미지 -->
+    <div class="index_main">
+        <div class="index_mainContent">
+            <div class="index_mainImageWrapper">
+                <img class="index_mainImage" th:if="${products.size() > 0}" th:src="${products[0].product_image_path}" alt="메인 추천 이미지">
+            </div>
+            <div class="index_mainDescription">
+                <h1 class="index_mainTitle">타임리스 슈즈 컬렉션</h1>
+                <p class="index_mainText">
+                    세련된 디자인과 편안함의 완벽한 조화를 이루는 신발 컬렉션을 만나보세요. <br>매일의 스타일을 더욱 돋보이게 해줄, 정성스럽게 제작된 아이템입니다.
+                </p>
+                <a href="/signup" class="index_mainButton">회원가입하고 신발 구매 혜택받기</a>
+            </div>
+        </div>
     </div>
+
+
     <p class="index_minlisttext">오늘의 추천 상품</p>
-    <!-- 3 ~ 9 번 이미지만 출력하기 위한 조건문 -->
-    <!-- 이미지를 리스트로 불러와서 each 문으로 하나씩 출력 -->
-    <div class="index_List" th:each="p, listnumStat : ${products}">
-        <a th:href="@{/product_details_page/{id}(id=${p.product_reg_num})}">
-            <img class="index_ImageList"
-                 th:if="${listnumStat.index >= 3 && listnumStat.index < 9}"
-                 th:src="${p.product_image_path}"
-                 alt="제품 리스트"></a>
+    <div class="index_ListContainer">
+        <div class="index_List" th:each="p : ${products}">
+            <a th:href="@{/product_details_page/{id}(id=${p.product_reg_num})}">
+                <img class="index_ImageList"
+                     th:src="${p.product_image_path}"
+                     alt="추천 상품 이미지">
+            </a>
+        </div>
     </div>
+
+
 
 </div>
 
