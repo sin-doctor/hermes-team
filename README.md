@@ -123,7 +123,7 @@ khtAcademy
    mvn spring-boot:run
    ```
 
-5. 브라우저에서 [http://localhost:8080](http://localhost:8080)을 열어 확인합니다.
+5. 브라우저에서 [http://localhost:8080](http://localhost:9090)을 열어 확인합니다.
 
 ---
 
