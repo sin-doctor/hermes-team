@@ -18,9 +18,6 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-
-
-
     @GetMapping("/logout")
     public String logout(HttpSession session){
         session.invalidate(); // invalidate 로그인된 정보를 초기화하면서 없애기
@@ -31,6 +28,7 @@ public class LoginController {
     public Object addLoggedInUserToModel(HttpSession session) {
         return session.getAttribute("loggedInUser");
     }
+
     @GetMapping("/login")
     public String login(){
         return "login";
@@ -55,9 +53,6 @@ public class LoginController {
         return "login_search";
     }
 
-
-
-
     @GetMapping("/login_search_completed")
     public String login_search_completed(@RequestParam("user_name")String user_name,
                                          @RequestParam("user_verification_answer")String user_verification_answer,
@@ -67,9 +62,5 @@ public class LoginController {
         model.addAttribute("user", user);
         return "login_search_completed";
     }
-
-
-
-
 
 }

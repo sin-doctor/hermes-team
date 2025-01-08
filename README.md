@@ -80,14 +80,14 @@ khtAcademy
     <td><img src="https://via.placeholder.com/100" alt="팀원이미지4" /></td>
   </tr>
   <tr>
-    <td>신동훈</td>
-    <td>김서현</td>
-    <td>이도형</td>
-    <td>이희섭</td>
+    <td>팀원1</td>
+    <td>팀원2</td>
+    <td>팀원3</td>
+    <td>팀원4</td>
   </tr>
   <tr>
     <td>회원가입</td>
-    <td>로그인</td>
+    <td>게시판</td>
     <td>메인</td>
     <td>마이페이지</td>
   </tr>
@@ -105,7 +105,7 @@ khtAcademy
 
 1. 이 저장소를 클론합니다.
    ```bash
-   git clone <https://github.com/sin-doctor/hermes-team.git>
+   git clone <repository_url>
    ```
 
 2. 프로젝트 디렉토리로 이동합니다.
@@ -159,4 +159,12 @@ khtAcademy
 ## 라이센스
 
 이 프로젝트는 MIT 라이센스를 따릅니다. 자세한 내용은 LICENSE 파일을 확인하세요.
+
+---
+
+## 문의
+
+프로젝트와 관련하여 문의 사항이 있으면 아래 이메일로 연락주세요.
+
+- Email: [your_email@example.com](mailto:your_email@example.com)
 

@@ -6,91 +6,7 @@
     <title>Hermes-Signup</title>
     <link href="/css/styles.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        .signup-container {
-            max-width: 400px;
-            margin: 50px auto;
-            padding: 30px 20px;
-        }
-
-        .signup-container h1 {
-            text-align: center;
-            font-size: 22px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .signup-container label {
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .signup-container input,
-        .signup-container select {
-            height: 40px;
-            margin-bottom: 15px;
-            width: 100%;
-            padding: 0 10px;
-            border: 1px solid white;
-            border-radius: 4px;
-            font-size: 14px;
-            border-bottom: 1px solid #ccc;
-        }
-
-        .signup-container input:focus,
-        .signup-container select:focus {
-            outline: none;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .signup-container button {
-            width: 100%;
-            padding: 12px 15px;
-            background-color: #333;
-            color: #fff;
-            font-size: 16px;
-            font-weight: 600;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-        #checkBtn {
-            width: auto;
-            padding: 8px 15px;
-            margin-bottom: 10px;
-            background-color: #666;
-            font-size: 14px;
-        }
-        .id-container {
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-            margin-bottom: 15px;
-        }
-        .id-container input {
-            flex: 1;
-            margin-bottom: 0;
-        }
-        .id-container button {
-            flex-shrink: 0;
-        }
-        .signup-container button:hover {
-            background-color: #555;
-            transform: translateY(-2px);
-        }
-        .signup-container button:active {
-            transform: translateY(0);
-        }
-        #message {
-            text-align: center;
-            font-size: 14px;
-            margin-top: 10px;
-        }
-    </style>
+    <script src="/js/signup.js"></script>
 </head>
 <body>
 <th:block th:replace="~{layout/header :: header}"></th:block>
@@ -105,33 +21,6 @@
             <button id="checkBtn" type="button">중복확인</button>
         </div>
         <p id="checkResult" style="font-size: 14px; margin-top: -10px;"></p>
-        <script>
-            $(document).ready(function () {
-                $('#checkBtn').click(function () {
-                    const user_id = $('#user_id').val();
-                    if(!user_id){
-                        alert('유저 아이디를 입력하세요');
-                        return;
-                    }
-
-                    $.ajax({
-                        url: '/check-user_id',
-                        type: 'POST',
-                        data: {user_id: user_id},
-                        success: function (response) {
-                            if (response.isDuplicate) {
-                                $('#checkResult').text('이미 사용중인 아이디입니다.').css('color', 'red');
-                            } else {
-                                $('#checkResult').text('사용가능한 아이디입니다.').css('color', 'green');
-                            }
-                        },
-                        error: function () {
-                            alert('서버 요청 중 오류가 발생했습니다. 유저네임 중복확인 불가합니다.');
-                        }
-                    });
-                });
-            });
-        </script>
 
         <label for="user_pw">비밀번호</label>
         <input type="password" id="user_pw" name="user_pw" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d@$!%*?&]{8,}$" title="비밀번호는 최소 8자 이상이어야 하며, 대소문자, 숫자, 특수문자가 포함되어야 합니다.">
@@ -158,26 +47,7 @@
         <button type="submit">회원가입</button>
     </form>
 </div>
-<script>
-    document.getElementById("signupForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // 기본 제출 동작 막기
 
-        const password = document.getElementById("user_pw").value;
-        const confirmPassword = document.getElementById("confirmPassword").value;
-        const message = document.getElementById("message");
-
-        if (password === confirmPassword) {
-            message.textContent = "비밀번호가 일치합니다.";
-            message.className = "success";
-            // 비밀번호가 일치하면 폼 제출
-            this.submit();
-        } else {
-            message.textContent = "비밀번호가 일치하지 않습니다. 다시 입력해주세요.";
-            message.className = "error";
-            // 비밀번호 불일치 시 제출되지 않음
-        }
-    });
-</script>
 <th:block th:replace="~{layout/footer :: footer}"></th:block>
 </body>
 </html>

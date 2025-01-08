@@ -84,3 +84,717 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+/*********************************
+               Main Page
+               index_container
+       *********************************/
+.index_container .index_main {
+    text-align: center;
+}
+
+/*가운데 메인 이미지 크기 조절 및 테두리 설정*/
+.index_container .index_mainImage {
+    height: 70%;
+    width: 80%;
+    border: 1px solid black;
+    margin: 20px;
+    border-radius: 30px;
+}
+
+/*메인 이미지 아래에 뜨는 이미지 리스트의 이미지 크기 및 테두리 설정 */
+.index_container .index_ImageList {
+    width: 150px;
+    height: 220px;
+    border: 1px solid black;
+    margin: 5px;
+}
+
+/*정렬을 위한 설정*/
+.index_container .index_List {
+    display: inline;
+    margin: 0 40px;
+}
+/*오늘의 추천 상품 css*/
+.index_container .index_minlisttext{
+    font-weight: bold;
+    font-size: 30px;
+    margin-left: 200px;
+}
+
+/*상품 리스트 호버 설정*/
+.index_container .index_ImageList:hover{
+    border: 3px black solid;
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+/*********************************
+                 Category_page
+                 category_container
+         *********************************/
+/*전제척인 정렬 설정*/
+.category_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+
+/*이미지 리스트 설정*/
+.category_container .category_list{
+    text-align: center;
+    width: 300px;
+    flex-direction: column;
+    display: flex;
+}
+
+/*이미지 상세설정*/
+.category_container .category_imagelist {
+    width: 100%;
+    height: 300px;
+    /*margin: 60px 0;*/
+}
+
+/*텍스트 설정*/
+.category_container .category_listtagstyle {
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/*링크 스타일*/
+.category_container .category_link {
+    text-decoration-line: none;
+    color: black;
+    margin: 60px 0;
+}
+
+.category_container .category_link:hover{
+    border: 3px lightcoral solid;
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+/*방문 전후 링크 색깔변경*/
+.category_container .category_link a:link,a:visited {
+    color: black;
+}
+/*********************************
+               error_page
+               error_container
+       *********************************/
+.error_container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.error_title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.error_message {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.error_button {
+    height: 45px;
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+}
+
+.error_button:hover {
+    background-color: #333;
+}
+/*********************************
+               login_page
+               login_container
+       *********************************/
+.login_container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px 20px;
+    width: 250px;
+}
+
+/* 폼 스타일 */
+.login_container .login_form {
+
+    display: flex;
+    flex-direction: column;
+}
+
+.login_container .login_form label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.login_container .login_form input {
+    height: 40px;
+    margin-bottom: 15px;
+    padding: 0 10px;
+    border: 1px solid white;
+    border-radius: 4px;
+    font-size: 14px;
+    border-bottom: 1px solid #ccc;
+}
+
+.login_container  .login_form input:focus {
+    border-color: #333;
+    outline: none;
+}
+
+/* 버튼 스타일 */
+.login_container  .login_button {
+    height: 45px;
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.login_container .login_button:hover {
+    background-color: #333;
+}
+
+/* 하단 링크 스타일 */
+.login_container  .links {
+    justify-content: space-between;
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+    color: #555;
+}
+
+.login_container  .links a {
+    text-decoration: none;
+    color: #555;
+}
+
+.login_container  .links a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+/*********************************
+            login_search_page
+            login_search_container
+    *********************************/
+.login_search_container {
+    margin: 50px auto;
+    width: 250px;
+    padding: 50px;
+    background: #ffffff;
+}
+.login_search_form {
+    display: flex;
+    flex-direction: column;
+}
+.login_search_form label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+.login_search_form input{
+    height: 40px;
+    margin-bottom: 15px;
+    padding: 0 10px;
+    border: 1px solid white;
+    border-radius: 4px;
+    font-size: 14px;
+    border-bottom: 1px solid #ccc;
+}
+.login_search_form select{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.login_search_form button {
+    height: 45px;
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+.login_search_form button:hover {
+    background-color: #333;
+}
+/*********************************
+          login_search_completed_page
+          login_search_completed_container
+  *********************************/
+
+.login_search_completed_container {
+
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+/* 스타일 */
+.find-container {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+}
+
+.find-container label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.find-container p {
+    height: 40px;
+    margin-bottom: 15px;
+    padding: 0 10px;
+    border: 1px solid white;
+    border-radius: 4px;
+    font-size: 14px;
+    border-bottom: 1px solid #ccc;
+}
+
+.find-container p:focus {
+    border-color: #333;
+    outline: none;
+}
+
+/* 링크 스타일 */
+.login_search_completed_container .links {
+
+    text-decoration: none;
+    background-color: mediumspringgreen;
+    color: #000000;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px 20px;
+    width: 210px;
+    text-align: center;
+
+}
+
+.login_search_completed_container.links:hover {
+    background-color: mediumaquamarine;
+}
+/*********************************
+       my_page__completed_page
+       my_page__completed_container
+*********************************/
+
+.my_page_container .my_page_user_information {
+    text-align: left;
+    margin-left: 400px;
+    margin-right: 400px;
+    border: 2px solid black;
+    border-radius: 50px;
+    padding-left: 50px;
+}
+
+.my_page_container .my_page_infoCorrection_href {
+    text-align: right;
+    margin-right: 50px;
+    margin-bottom: 20px;
+}
+
+.my_page_container .href_button {
+    text-align: center;
+    padding: 15px;
+    background-color: #84CEB0;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+}
+
+.my_page_container .href_button:hover {
+    background-color: mediumseagreen;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.my_page_container .my_page_bold_span {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.my_page_container .my_page_normal_span {
+    font-size: 18px;
+    vertical-align: 3px;
+}
+
+.my_page_container .my_page_user_purchase_history {
+    margin-left: 400px;
+    margin-right: 400px;
+}
+
+.my_page_container .my_page_user_purchase_history .my_page_purchase_each {
+    display: flex;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 25px;
+    padding: 20px 50px;
+    margin-bottom: 20px;
+}
+
+.my_page_container .my_page_user_purchase_history .my_page_purchase_each .my_page_purchase_each_text{
+    display: inline;
+}
+
+.my_page_container .my_page_user_purchase_history .my_page_purchase_each .my_page_img{
+    max-width: 150px;
+    margin-right: 20px;
+}
+
+.my_page_container .my_page_h3 {
+    margin-left: 400px;
+    margin-right: 400px;
+    color: black;
+}
+/*********************************
+        myPage_infoCorrection_page
+        myPage_infoCorrection_container
+*********************************/
+
+.my_page_personal_container .infoCorrection_container {
+    text-align: center;
+    margin-left: 400px;
+    margin-right: 400px;
+    padding-left: 50px;
+}
+
+.my_page_personal_container .infoCorrection_container label {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.my_page_personal_container .submit_button {
+    text-align: center;
+    padding: 10px;
+    background-color: #84CEB0;
+    border: none;
+    border-radius: 15px;
+    font-size: 15px;
+}
+
+.my_page_personal_container .submit_button:hover {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/*********************************
+          myPage_infoCorrection_success_page
+          myPage_infoCorrection_success_container
+  *********************************/
+
+.my_page_personal_container .return_href {
+    text-align: center;
+    padding : 50px;
+}
+.my_page_personal_container .return_href .href_button {
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    background-color: #84CEB0;
+}
+.my_page_personal_container .return_href .href_button:hover {
+    cursor: pointer;
+    background-color: mediumseagreen;
+    font-weight: bold;
+}
+/*********************************
+         product-details_page
+         product-details_container
+ *********************************/
+
+.product-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 40px;
+    flex: 1;
+}
+.product-image {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+.product-image:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.product-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-width: 500px;
+}
+.product-container > .product-image {
+    overflow: hidden;
+    border-radius: 8px;
+}
+.product-details h1 {
+    font-size: 2em;
+    margin: 0;
+}
+.product-details p {
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+.product-description {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    color: #666;
+    background-color: #cccccc;
+    border-radius: 3px;
+    padding: 30px;
+    max-width: 100%;
+}
+.size-selector {
+    margin-bottom: 20px;
+}
+.product-container select {
+    padding: 8px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 200px;
+}
+.buy-button {
+    background-color: #28a745;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    max-width: 200px;
+    margin-top: 20px;
+}
+.buy-button:hover {
+    background-color: #218838;
+}
+
+/*********************************
+      purchase_completed_page
+      purchase_completed_container
+*********************************/
+
+.purchase-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.purchase-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.purchase-details {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.purchase-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.purchase-image {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.item-details {
+    flex-grow: 1;
+}
+
+.success-message {
+    color: #28a745;
+    font-size: 1.2em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.purchase-history-button {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.purchase-history-button:hover {
+    background-color: #0056b3;
+}
+
+/*********************************
+        signup__page
+         signup_container
+ *********************************/
+
+.signup-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px 20px;
+}
+
+.signup-container h1 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.signup-container label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.signup-container input,
+.signup-container select {
+    height: 40px;
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 0 10px;
+    border: 1px solid white;
+    border-radius: 4px;
+    font-size: 14px;
+    border-bottom: 1px solid #ccc;
+}
+
+.signup-container input:focus,
+.signup-container select:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.signup-container button {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #333;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+#checkBtn {
+    width: auto;
+    padding: 8px 15px;
+    margin-bottom: 10px;
+    background-color: #666;
+    font-size: 14px;
+}
+.id-container {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+.id-container input {
+    flex: 1;
+    margin-bottom: 0;
+}
+.id-container button {
+    flex-shrink: 0;
+}
+.signup-container button:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+}
+.signup-container button:active {
+    transform: translateY(0);
+}
+#message {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+    color: red;
+}
+/*********************************
+          sign-up-success_page
+          sign-up-success_container
+  *********************************/
+
+.success-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.success-container h1 {
+    font-size: 2em;
+}
+
+.success-container a {
+    text-decoration: none;
+    color: darkblue;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.success-container a:hover {
+    background-color: #ddd;
+}

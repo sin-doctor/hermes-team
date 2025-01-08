@@ -4,79 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hermes</title>
-    <style>
-        .my_page_container {
-        }
-        .my_page_container .my_page_user_information {
-            text-align: left;
-            margin-left: 400px;
-            margin-right: 400px;
-            border: 2px solid black;
-            border-radius: 50px;
-            padding-left: 50px;
-        }
-
-        .my_page_container .my_page_infoCorrection_href {
-            text-align: right;
-            margin-right: 50px;
-            margin-bottom: 20px;
-        }
-
-        .my_page_container .href_button {
-            text-align: center;
-            padding: 15px;
-            background-color: #84CEB0;
-            border: none;
-            border-radius: 25px;
-            font-size: 20px;
-        }
-
-        .my_page_container .href_button:hover {
-            background-color: mediumseagreen;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .my_page_container .my_page_bold_span {
-            font-weight: bold;
-            font-size: 24px;
-        }
-
-        .my_page_container .my_page_normal_span {
-            font-size: 18px;
-            vertical-align: 3px;
-        }
-
-        .my_page_container .my_page_user_purchase_history {
-            margin-left: 400px;
-            margin-right: 400px;
-        }
-
-        .my_page_container .my_page_user_purchase_history .my_page_purchase_each {
-            display: flex;
-            align-items: center;
-            border: 2px solid black;
-            border-radius: 25px;
-            padding: 20px 50px;
-            margin-bottom: 20px;
-        }
-
-        .my_page_container .my_page_user_purchase_history .my_page_purchase_each .my_page_purchase_each_text{
-            display: inline;
-        }
-
-        .my_page_container .my_page_user_purchase_history .my_page_purchase_each .my_page_img{
-            max-width: 150px;
-            margin-right: 20px;
-        }
-
-        .my_page_container .my_page_h3 {
-            margin-left: 400px;
-            margin-right: 400px;
-            color: black;
-        }
-
-    </style>
     <link href="/css/styles.css" rel="stylesheet">
 </head>
 <body>
@@ -117,15 +44,8 @@
     <div class="my_page_user_purchase_history">
         <h3 class="my_page_bold_span">구매 내역</h3>
 
-<!--        <div class="my_page_purchase_each" th:each="p : ${purchases}">-->
-<!--            <p th:text="'주문 번호: ' + ${p.purchase_order_id}"></p>-->
-<!--            <p th:text="'신발 사이즈: ' + ${p.purchase_product_size}"></p>-->
-<!--            <p th:text="'구매일: ' + ${p.purchase_date}"></p>-->
-<!--            <p th:text="'배송 상태: ' + ${p.purchase_status}"></p>-->
-<!--        </div>-->
-
         <div class="my_page_purchase_each" th:each="p2 : ${purchases2}">
-            <img class="my_page_img" th:src="${p2.product_image}" alt="제품 이미지">
+            <img class="my_page_img" th:src="${p2.product_image_path}" alt="제품 이미지">
             <div class = "my_page_purchase_each_text">
                 <p th:text="'제품 이름: ' + ${p2.product_name}"></p>
                 <p th:text="'제품 가격: ' + ${p2.product_price}"></p>

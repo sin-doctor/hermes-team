@@ -1,8 +1,5 @@
 package com.hermes.hermes.dto;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.*;
 
 import java.util.Date;
@@ -14,7 +11,7 @@ import java.util.Date;
 @ToString             //toString 줄임말로 사용
 
 public class PurchaseProductJoin {
-    private String product_image;
+    private String product_image_path;
     private String product_name;
     private String product_price;
     private int product_size;

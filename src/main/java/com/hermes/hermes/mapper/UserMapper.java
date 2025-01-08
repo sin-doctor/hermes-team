@@ -16,7 +16,7 @@ public interface UserMapper {
     List<User> getAllUsers();
 
 
-     User login(String user_id,String user_pw);
+    User login(String user_id,String user_pw);
     // 문답으로 유저 찾기
     // User login_search(String answer);
 
