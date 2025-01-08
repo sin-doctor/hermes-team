@@ -10,12 +10,8 @@ import java.util.List;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-    private final ProductMapper productMapper;
-
     @Autowired
-    public ProductServiceImpl(ProductMapper productMapper) {
-        this.productMapper = productMapper;
-    }
+    private ProductMapper productMapper;
 
     @Override
     public Product getProduct(int product_reg_num) {
